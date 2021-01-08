@@ -110,6 +110,7 @@
         (getServerPort [this] port)
         (getServerName [this] host)
         (getRemoteAddr [this] "127.0.0.1")
+        (getRemotePort [this] 0)
         (getRequestURI [this] (str "/" path))
         (getServletPath [this] (.getRequestURI this))
         (getContextPath [this] "")

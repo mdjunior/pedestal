@@ -23,6 +23,11 @@
     (assoc! req-map :character-encoding e)
     req-map))
 
+(defn add-remote-port [req-map ^HttpServletRequest servlet-req]
+      (if-let [e (.getRemotePort servlet-req)]
+              (assoc! req-map :remote-port e)
+              req-map))
+
 (defn add-ssl-client-cert [req-map ^HttpServletRequest servlet-req]
   (if-let [c (.getAttribute servlet-req "javax.servlet.request.X509Certificate")]
     (assoc! req-map :ssl-client-cert c)
@@ -34,6 +39,7 @@
       (add-content-length servlet-req)
       (add-content-type servlet-req)
       (add-character-encoding servlet-req)
+      (add-remote-port servlet-req)
       (add-ssl-client-cert servlet-req)
       (assoc! :servlet servlet)
       (assoc! :servlet-request servlet-req)

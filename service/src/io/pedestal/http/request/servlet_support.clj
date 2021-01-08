@@ -35,6 +35,7 @@
   (server-port [req] (.getServerPort req))
   (server-name [req] (.getServerName req))
   (remote-addr [req] (.getRemoteAddr req))
+  (remote-port [req] (.getRemotePort req))
   (uri [req] (.getRequestURI req))
   (query-string [req] (.getQueryString req))
   (scheme [req] (keyword (.getScheme req)))
